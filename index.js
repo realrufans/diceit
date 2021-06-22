@@ -17,7 +17,7 @@ const mcontainer = document.getElementById("mcontainer");
 const playerOneName = document.getElementById("playerOneName");
 const playerTwoName = document.getElementById("playerTwoName");
 
-message.textContent = `${playerOneName}'s Turn`
+
 
 start.addEventListener('click', () => {
 
@@ -31,6 +31,7 @@ function openGame() {
     } else {
         wcontainer.style.display = "none";
         mcontainer.style.display = "block";
+        message.textContent = `${playerOneName.value.toUpperCase()}'s Turn`
     }
 }
 
@@ -45,6 +46,8 @@ player2Dice.style.display = "block";
 /* Hook up a click event listener to the Roll Dice Button. */
 rollBtn.addEventListener("click", function() {
     const randomNumber = Math.floor(Math.random() * 6) + 1;
+
+
 
     if (player1Turn) {
         if (randomNumber === 1) {
@@ -98,9 +101,9 @@ rollBtn.addEventListener("click", function() {
         }
         player1Score += randomNumber;
         player1Scoreboard.textContent = player1Score;
-        player1Dice.classList.remove("active");
-        player2Dice.classList.add("active");
-        message.textContent = `${playerOneName.value.toUpperCase()}'s TUrn`;
+        document.getElementById("player1Dices").classList.remove("active");
+        document.getElementById("player2Dices").classList.add("active");
+        message.textContent = `${playerOneName.value.toUpperCase()}'s Turn`;
     } else {
         if (randomNumber === 1) {
             document.getElementById("dice2.1").style.display = "block";
@@ -153,10 +156,10 @@ rollBtn.addEventListener("click", function() {
         }
         player2Score += randomNumber;
         player2Scoreboard.textContent = player2Score;
-        player2Dice.classList.remove("active");
-        player1Dice.classList.add("active");
+        document.getElementById("player2Dices").classList.remove("active");
+        document.getElementById("player1Dices").classList.add("active");
         console.log(playerTwoName)
-        message.textContent = `${playerTwoName.value.toUpperCase()}'s TUrn`;
+        message.textContent = `${playerTwoName.value.toUpperCase()}'s Turn`;
     }
 
     if (player1Score >= 20) {
@@ -194,8 +197,8 @@ function reset() {
     message.textContent = "Player 1 Turn";
     resetBtn.style.display = "none";
     rollBtn.style.display = "block";
-    player2Dice.classList.remove("active");
-    player1Dice.classList.add("active");
+    player2Dices.classList.remove("active");
+    player1Dices.classList.add("active");
     player1Dice.style.display = "block";
     player2Dice.style.display = "block";
 }
