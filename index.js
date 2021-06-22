@@ -17,7 +17,7 @@ const mcontainer = document.getElementById("mcontainer");
 const playerOneName = document.getElementById("playerOneName");
 const playerTwoName = document.getElementById("playerTwoName");
 
-
+message.textContent = `${playerOneName}'s Turn`
 
 start.addEventListener('click', () => {
 
